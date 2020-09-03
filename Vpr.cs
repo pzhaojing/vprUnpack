@@ -73,7 +73,18 @@ namespace VprUnpack
 				if (tmp != 0xb1) return false;
 				int index = br.ReadInt32();
 				string name = br.ReadString();
-				uirs[index - 1] = new Uri(name.Substring(1));
+                if (name.StartsWith("R"))
+	            {
+                     return true;
+	            }
+                try 
+	            {	        
+		            uirs[index - 1] = new Uri(name.Substring(1));
+	            }
+	            catch (Exception)
+	            {
+	            }
+				
 				return true;
 			}
 			while (getNexturi())
