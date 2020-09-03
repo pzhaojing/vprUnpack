@@ -48,7 +48,16 @@ namespace VprUnpack
 			ver = br.ReadUInt32();
 			switch (ver)
 			{
-				case 5:
+
+                case 3:
+                    Console.WriteLine("\t v3 skip!");
+                    return;
+
+                case 4:
+                    br.BaseStream.Position += 113;
+                    break;
+
+                case 5:
 					br.BaseStream.Position += 113;
 					break;
 				case 6:
